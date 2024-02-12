@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import '../../../models/domains_model.dart';
 import '../../../models/login_model.dart';
+import '../../../splash_screen.dart';
 
 class DomainPages extends StatefulWidget {
   final LoginModel? loginModel;
@@ -33,7 +34,7 @@ class _DomainPagesState extends State<DomainPages> {
       'Authorization': 'Bearer ${widget.loginModel!.token!}',
     };
 
-    var request = http.Request('GET', Uri.parse('https://api.mail.tm/domains?page=1'));
+    var request = http.Request('GET', Uri.parse('${BaseUrl.baseUrl}/domains?page=1'));
     request.headers.addAll(headers);
 
     http.StreamedResponse response = await request.send();
